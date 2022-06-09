@@ -13,6 +13,13 @@ graalvmNative {
     binaries {
         main {
             mainClass = 'io.github.edudar.gax.SampleApplication'
+            // It complains about 'SimpleLogger' first
+            buildArgs.add('--trace-object-instantiation=org.slf4j.impl.SimpleLogger')
+            buildArgs.add('--initialize-at-build-time=org.slf4j.impl.SimpleLogger')
+            // Then it complains about 'Slf4JLoggerFactory'
+            buildArgs.add('--trace-object-instantiation=io.grpc.netty.shaded.io.netty.util.internal.logging.Slf4JLoggerFactory')
+            // Adding this leads to 'trying to change RUN_TIME from "META-INF/native-image/com.google.api/gax-grpc/native-image.properties"'
+            buildArgs.add('--initialize-at-build-time=io.grpc.netty.shaded.io.netty.util.internal.logging.Slf4JLoggerFactory')
         }
     }
 }
