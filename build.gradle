@@ -19,7 +19,6 @@ graalvmNative {
 
 dependencies {
     implementation 'org.slf4j:slf4j-simple:1.7.36'
-
     implementation "com.google.api:gax:2.18.1"
     implementation "com.google.api:gax-grpc:2.18.1"
 }
