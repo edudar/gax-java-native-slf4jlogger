@@ -1,12 +1,14 @@
 package io.github.edudar.gax;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SpringBootApplication
 public class SampleApplication {
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(SampleApplication.class);
+
     public static void main(String[] args) {
-        SpringApplication.run(SampleApplication.class, args);
+        System.out.println("Success!");
+        LOGGER.info("SLF4J Success!");
     }
 }

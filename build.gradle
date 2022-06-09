@@ -1,8 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.7.0'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'org.springframework.experimental.aot' version '0.12.0'
+    id 'org.graalvm.buildtools.native' version '0.9.11'
 }
 
 java {
@@ -11,8 +9,16 @@ java {
     }
 }
 
+graalvmNative {
+    binaries {
+        main {
+            mainClass = 'io.github.edudar.gax.SampleApplication'
+        }
+    }
+}
+
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.slf4j:slf4j-simple:1.7.36'
 
     implementation "com.google.api:gax:2.18.1"
     implementation "com.google.api:gax-grpc:2.18.1"
